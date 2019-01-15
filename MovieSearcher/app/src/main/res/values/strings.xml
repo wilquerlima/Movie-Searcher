@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MovieSearcher</string>
+    <string name="title_movie">Movies</string>
 </resources>
