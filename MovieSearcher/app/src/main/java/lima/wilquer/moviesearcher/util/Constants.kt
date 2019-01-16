@@ -6,5 +6,7 @@ class Constants{
         @JvmStatic val URL_IMAGE = "https://image.tmdb.org/t/p/"
         @JvmStatic val API_KEY = "f66be7332fe1858a7e5065283d3560cb"
         @JvmStatic val LANGUAGE_PT_BR = "pt-BR"
+        @JvmStatic val POSTER_SIZE_RECYCLE = "w92/"
+        @JvmStatic val POSTER_SIZE_DETAILS = "w92/"
     }
 }

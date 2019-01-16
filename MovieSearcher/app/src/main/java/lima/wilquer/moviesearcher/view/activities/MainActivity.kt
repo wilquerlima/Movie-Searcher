@@ -1,6 +1,5 @@
 package lima.wilquer.moviesearcher.view.activities
 
-import android.annotation.SuppressLint
 import android.app.SearchManager
 import android.content.Context
 import android.os.AsyncTask
@@ -8,7 +7,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.SearchView
-import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.Menu
 import android.widget.Toast
@@ -28,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     val TAG: String = MainActivity::class.java.simpleName
     val handler: Handler = Handler()
+    var listGenres: List<Genres>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,8 +63,9 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onResponse(call: Call<GenreResponse>?, response: Response<GenreResponse>) {
                     //progress.visibility = View.GONE
+                    //listGenres = response.body()?.genres
                     response.body()?.let{
-                        val listGenres : List<Genres>? = it.genres
+                        //ctx.listGenres  = it.genres
                         Toast.makeText(ctx,"onResponse",Toast.LENGTH_SHORT).show()
                     }
                 }
