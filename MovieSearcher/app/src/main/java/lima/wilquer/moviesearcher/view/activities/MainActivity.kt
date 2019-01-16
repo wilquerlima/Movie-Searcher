@@ -1,5 +1,6 @@
-package lima.wilquer.moviesearcher.ui.activities
+package lima.wilquer.moviesearcher.view.activities
 
+import android.annotation.SuppressLint
 import android.app.SearchManager
 import android.content.Context
 import android.os.AsyncTask
@@ -8,12 +9,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.SearchView
 import android.support.v7.widget.Toolbar
-import android.transition.Visibility
 import android.util.Log
 import android.view.Menu
-import android.view.View
-import android.view.View.INVISIBLE
-import android.widget.ProgressBar
+import android.widget.Toast
+import lima.wilquer.moviesearcher.ViewPagerAdapter
 import lima.wilquer.moviesearcher.R
 import lima.wilquer.moviesearcher.data.models.genre.GenreResponse
 import lima.wilquer.moviesearcher.data.models.genre.Genres
@@ -23,6 +22,7 @@ import lima.wilquer.moviesearcher.util.Constants
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,18 +33,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val toolbar = findViewById<Toolbar>(R.id.my_toolbar)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(my_toolbar)
         supportActionBar!!.title = getString(R.string.title_movie)
+
+        val fragmentAdapter = ViewPagerAdapter(supportFragmentManager)
+        viewpager.adapter = fragmentAdapter
+
+        tab.setupWithViewPager(viewpager)
+
 
         //progress = findViewById<ProgressBar>(R.id.progress)
         //progress?.visibility = View.VISIBLE
 
-        DoAsync().execute()
+        DoAsync(this@MainActivity).execute()
     }
 
-    class DoAsync : AsyncTask<Void,Void,Void>(){
+    class DoAsync(context: Context) : AsyncTask<Void,Void,Void>(){
 
+        var ctx = context
 
         override fun doInBackground(vararg p0: Void?): Void? {
             val apiService = RetrofitApi(Constants.URL_GERAL).client.create(GenreService::class.java)
@@ -60,6 +66,7 @@ class MainActivity : AppCompatActivity() {
                     //progress.visibility = View.GONE
                     response.body()?.let{
                         val listGenres : List<Genres>? = it.genres
+                        Toast.makeText(ctx,"onResponse",Toast.LENGTH_SHORT).show()
                     }
                 }
             })

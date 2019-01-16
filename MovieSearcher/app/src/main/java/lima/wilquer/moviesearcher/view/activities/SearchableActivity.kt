@@ -1,4 +1,4 @@
-package lima.wilquer.moviesearcher.ui.activities
+package lima.wilquer.moviesearcher.view.activities
 
 import android.app.SearchManager
 import android.content.Intent
