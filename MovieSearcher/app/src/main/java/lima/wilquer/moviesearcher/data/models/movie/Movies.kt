@@ -1,10 +1,10 @@
 package lima.wilquer.moviesearcher.data.models.movie
 
 data class Movies(
-        var poster_path : String,
-        var adult : Boolean,
-        var overview : String,
-        var release_date : String,
+        var poster_path: String,
+        var adult: Boolean,
+        var overview: String,
+        var release_date: String,
         var genre_ids: List<Int>,
         var id: Int,
         var original_title: String,

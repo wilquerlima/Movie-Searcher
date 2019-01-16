@@ -1,4 +1,4 @@
-package lima.wilquer.moviesearcher
+package lima.wilquer.moviesearcher.util.adapters
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
