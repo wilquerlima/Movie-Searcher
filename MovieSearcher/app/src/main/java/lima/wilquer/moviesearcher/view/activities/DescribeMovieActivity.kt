@@ -28,7 +28,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DescribeMovie : AppCompatActivity(), OnMoviesDetailCallBack {
+class DescribeMovieActivity : AppCompatActivity(), OnMoviesDetailCallBack {
 
     val callback: OnMoviesDetailCallBack = this
 

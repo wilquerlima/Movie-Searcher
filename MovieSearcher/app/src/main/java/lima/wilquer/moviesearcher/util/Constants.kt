@@ -11,9 +11,9 @@ class Constants {
         @JvmStatic
         val LANGUAGE_PT_BR = "pt-BR"
         @JvmStatic
-        val POSTER_SIZE_RECYCLE = "w92/"
+        val POSTER_SIZE_RECYCLE = "w300/"
         @JvmStatic
-        val POSTER_SIZE_DETAILS = "w500/"
+        val POSTER_SIZE_DETAILS = "w780/"
         @JvmStatic
         val ID_GENRE_DRAMA = 18
         @JvmStatic

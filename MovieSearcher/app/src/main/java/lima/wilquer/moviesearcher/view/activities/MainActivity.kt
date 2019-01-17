@@ -2,6 +2,8 @@ package lima.wilquer.moviesearcher.view.activities
 
 import android.app.SearchManager
 import android.content.Context
+import android.content.Intent
+import android.graphics.Color
 import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -31,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         setSupportActionBar(my_toolbar)
-        supportActionBar!!.title = getString(R.string.title_movie)
+        supportActionBar?.title = getString(R.string.title_movie)
 
         val fragmentAdapter = ViewPagerAdapter(supportFragmentManager)
         viewpager.adapter = fragmentAdapter
@@ -41,11 +43,30 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
 
+        val searchItem = menu.findItem(R.id.search)
+        val searchView = searchItem.actionView as SearchView
+        searchView.setQueryHint("Pesquisar...")
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                Toast.makeText(this@MainActivity,p0,Toast.LENGTH_SHORT).show()
+                val intent = Intent(applicationContext, SearchableActivity::class.java)
+                intent.putExtra(SearchManager.QUERY, p0)
+                intent.setAction(Intent.ACTION_SEARCH)
+                startActivity(intent)
+                return false
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return false
+            }
+
+        })
         // Associate searchable configuration with the SearchView
-        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        /*val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         (menu.findItem(R.id.search).actionView as SearchView).apply {
             setSearchableInfo(searchManager.getSearchableInfo(componentName))
-        }
+        }*/
 
         return true
     }

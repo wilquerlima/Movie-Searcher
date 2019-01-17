@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.movie_item.view.*
 import lima.wilquer.moviesearcher.R
 import lima.wilquer.moviesearcher.data.models.movie.Movies
 import lima.wilquer.moviesearcher.util.Constants
-import lima.wilquer.moviesearcher.view.activities.DescribeMovie
+import lima.wilquer.moviesearcher.view.activities.DescribeMovieActivity
 
 /**
  * Created by wilqu on 15/01/2019.
@@ -40,7 +40,7 @@ class RecycleViewAdapter(val list: List<Movies>?, val context: Context) : Recycl
         holder.updateWithUrl(url)
         holder.titleMovie.text = list[position].title
         holder.cardView.setOnClickListener({
-            val intent = Intent(context, DescribeMovie::class.java)
+            val intent = Intent(context, DescribeMovieActivity::class.java)
             var id = list[position].id
             intent.putExtra("id", list[position].id)
             intent.putExtra("title", list[position].title)
