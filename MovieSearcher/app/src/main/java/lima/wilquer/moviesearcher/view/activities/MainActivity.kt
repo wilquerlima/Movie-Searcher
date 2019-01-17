@@ -30,11 +30,14 @@ class MainActivity : AppCompatActivity() {
 
         val searchItem = menu.findItem(R.id.search)
         val searchView = searchItem.actionView as SearchView
-        searchView.setQueryHint("Pesquisar...")
+        searchView.queryHint = getString(R.string.searchview_hint)
 
+        //listener para o searchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+
+            //listener para quando o clique no teclado for executado
             override fun onQueryTextSubmit(p0: String?): Boolean {
-                Toast.makeText(this@MainActivity,p0,Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this@MainActivity,p0,Toast.LENGTH_SHORT).show()
                 val intent = Intent(applicationContext, SearchableActivity::class.java)
                 intent.putExtra(SearchManager.QUERY, p0)
                 intent.setAction(Intent.ACTION_SEARCH)
@@ -47,11 +50,6 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-        // Associate searchable configuration with the SearchView
-        /*val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        (menu.findItem(R.id.search).actionView as SearchView).apply {
-            setSearchableInfo(searchManager.getSearchableInfo(componentName))
-        }*/
 
         return true
     }

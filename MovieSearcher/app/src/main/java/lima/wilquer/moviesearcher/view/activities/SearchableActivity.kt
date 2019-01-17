@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -38,7 +39,7 @@ class SearchableActivity : AppCompatActivity(), OnMoviesCallBack {
         supportActionBar!!.setDisplayShowHomeEnabled(true)
 
         rv = recycleViewSearch
-
+        progress.visibility = View.VISIBLE
         handleIntent(intent)
 
     }
@@ -74,6 +75,7 @@ class SearchableActivity : AppCompatActivity(), OnMoviesCallBack {
     }
 
     override fun onSucess(movies: List<Movies>?) {
+        progress.visibility = View.GONE
         supportActionBar?.title = query
 
         //lib para deixar os cardviews lado a lado
@@ -84,6 +86,7 @@ class SearchableActivity : AppCompatActivity(), OnMoviesCallBack {
     }
 
     override fun onError(msgError: String) {
+        progress.visibility = View.GONE
         Toast.makeText(this, msgError, Toast.LENGTH_SHORT).show()
     }
 }

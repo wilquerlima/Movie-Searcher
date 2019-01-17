@@ -2,4 +2,6 @@
     <string name="app_name">MovieSearcher</string>
     <string name="title_movie">Movies</string>
     <string name="txt_descricao">Descrição</string>
+    <string name="noDescription">Atenção: o filme desejado não possui descrição.</string>
+    <string name="searchview_hint">Pesquisar...</string>
 </resources>

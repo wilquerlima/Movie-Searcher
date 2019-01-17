@@ -9,11 +9,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
+import kotlinx.android.synthetic.main.fragment_acao.*
 import lima.wilquer.moviesearcher.R
 import kotlinx.android.synthetic.main.fragment_acao.view.*
+import lima.wilquer.moviesearcher.R.id.progress
 import lima.wilquer.moviesearcher.data.models.movie.MovieResponse
 import lima.wilquer.moviesearcher.data.models.movie.Movies
 import lima.wilquer.moviesearcher.data.network.api.RetrofitApi
@@ -39,6 +42,8 @@ class AcaoFragment : Fragment(), OnMoviesCallBack {
         val view: View = inflater.inflate(R.layout.fragment_acao, container, false)
 
         rv = view.recycleViewAcao
+
+        view.progress.visibility = View.VISIBLE
 
         DoAsync(callback).execute()
 
@@ -71,6 +76,7 @@ class AcaoFragment : Fragment(), OnMoviesCallBack {
     }
 
     override fun onSucess(movies: List<Movies>?) {
+        progress.visibility = View.GONE
         val moviesList = mutableListOf<Movies>()
 
         //serve para apenas adicionar a lista de filmes, os filmes que forem correspondentes ao genero escolhido
@@ -90,6 +96,7 @@ class AcaoFragment : Fragment(), OnMoviesCallBack {
     }
 
     override fun onError(msgError: String) {
+        progress.visibility = View.GONE
         Toast.makeText(context, msgError, Toast.LENGTH_SHORT).show()
     }
 

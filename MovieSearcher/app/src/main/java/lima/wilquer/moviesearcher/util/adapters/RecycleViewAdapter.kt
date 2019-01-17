@@ -39,9 +39,10 @@ class RecycleViewAdapter(val list: List<Movies>?, val context: Context) : Recycl
         val url = Constants.URL_IMAGE + Constants.POSTER_SIZE_RECYCLE + list!![position].poster_path
         holder.updateWithUrl(url)
         holder.titleMovie.text = list[position].title
+
+        //onClick para descrever o filme do cardView
         holder.cardView.setOnClickListener({
             val intent = Intent(context, DescribeMovieActivity::class.java)
-            var id = list[position].id
             intent.putExtra("id", list[position].id)
             intent.putExtra("title", list[position].title)
             startActivity(context, intent, Bundle.EMPTY)

@@ -28,6 +28,8 @@ class DescribeMovieActivity : AppCompatActivity(), OnMoviesDetailCallBack {
         val id = intent.extras.getInt("id")
         val title = intent.extras.getString("title")
 
+        progress.visibility = View.VISIBLE
+
         setSupportActionBar(my_toolbar)
         supportActionBar!!.title = title
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -69,10 +71,14 @@ class DescribeMovieActivity : AppCompatActivity(), OnMoviesDetailCallBack {
                 load(url).
                 into(img_desc)
         descricao.visibility = View.VISIBLE
-        txt_desc.text = movie.overview
+
+        if(movie.overview.equals("")) txt_desc.text = getString(R.string.noDescription)
+        else txt_desc.text = movie.overview
+        progress.visibility = View.GONE
     }
 
     override fun onError(msgError: String) {
+        progress.visibility = View.GONE
         Toast.makeText(this, msgError, Toast.LENGTH_SHORT).show()
     }
 }
