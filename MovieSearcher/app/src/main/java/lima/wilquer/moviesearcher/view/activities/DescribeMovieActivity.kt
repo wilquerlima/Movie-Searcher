@@ -28,7 +28,7 @@ class DescribeMovieActivity : AppCompatActivity(), OnMoviesDetailCallBack {
         val id = intent.extras.getInt("id")
         val title = intent.extras.getString("title")
 
-        progress.visibility = View.VISIBLE
+        progress?.visibility = View.VISIBLE
 
         setSupportActionBar(my_toolbar)
         supportActionBar!!.title = title
@@ -74,11 +74,11 @@ class DescribeMovieActivity : AppCompatActivity(), OnMoviesDetailCallBack {
 
         if(movie.overview.equals("")) txt_desc.text = getString(R.string.noDescription)
         else txt_desc.text = movie.overview
-        progress.visibility = View.GONE
+        progress?.visibility = View.GONE
     }
 
     override fun onError(msgError: String) {
-        progress.visibility = View.GONE
+        progress?.visibility = View.GONE
         Toast.makeText(this, msgError, Toast.LENGTH_SHORT).show()
     }
 }

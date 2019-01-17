@@ -43,7 +43,7 @@ class AcaoFragment : Fragment(), OnMoviesCallBack {
 
         rv = view.recycleViewAcao
 
-        view.progress.visibility = View.VISIBLE
+        view.progress?.visibility = View.VISIBLE
 
         DoAsync(callback).execute()
 
@@ -76,7 +76,7 @@ class AcaoFragment : Fragment(), OnMoviesCallBack {
     }
 
     override fun onSucess(movies: List<Movies>?) {
-        progress.visibility = View.GONE
+        progress?.visibility = View.GONE
         val moviesList = mutableListOf<Movies>()
 
         //serve para apenas adicionar a lista de filmes, os filmes que forem correspondentes ao genero escolhido
@@ -96,7 +96,7 @@ class AcaoFragment : Fragment(), OnMoviesCallBack {
     }
 
     override fun onError(msgError: String) {
-        progress.visibility = View.GONE
+        progress?.visibility = View.GONE
         Toast.makeText(context, msgError, Toast.LENGTH_SHORT).show()
     }
 

@@ -39,7 +39,7 @@ class SearchableActivity : AppCompatActivity(), OnMoviesCallBack {
         supportActionBar!!.setDisplayShowHomeEnabled(true)
 
         rv = recycleViewSearch
-        progress.visibility = View.VISIBLE
+        progress?.visibility = View.VISIBLE
         handleIntent(intent)
 
     }
@@ -75,7 +75,7 @@ class SearchableActivity : AppCompatActivity(), OnMoviesCallBack {
     }
 
     override fun onSucess(movies: List<Movies>?) {
-        progress.visibility = View.GONE
+        progress?.visibility = View.GONE
         supportActionBar?.title = query
 
         //lib para deixar os cardviews lado a lado
@@ -86,7 +86,7 @@ class SearchableActivity : AppCompatActivity(), OnMoviesCallBack {
     }
 
     override fun onError(msgError: String) {
-        progress.visibility = View.GONE
+        progress?.visibility = View.GONE
         Toast.makeText(this, msgError, Toast.LENGTH_SHORT).show()
     }
 }

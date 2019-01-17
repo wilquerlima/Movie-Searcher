@@ -40,7 +40,7 @@ class DramaFragment : Fragment(), OnMoviesCallBack {
         val view: View = inflater.inflate(R.layout.fragment_drama, container, false)
 
         rv = view.recycleViewDrama
-        view.progress.visibility = View.VISIBLE
+        view.progress?.visibility = View.VISIBLE
 
         DoAsync(callback).execute()
 
@@ -72,7 +72,7 @@ class DramaFragment : Fragment(), OnMoviesCallBack {
     }
 
     override fun onSucess(movies: List<Movies>?) {
-        progress.visibility = View.GONE
+        progress?.visibility = View.GONE
         val moviesList = mutableListOf<Movies>()
 
         //serve para apenas adicionar a lista de filmes, os filmes que forem correspondentes ao genero escolhido
@@ -92,7 +92,7 @@ class DramaFragment : Fragment(), OnMoviesCallBack {
     }
 
     override fun onError(msgError: String) {
-        progress.visibility = View.GONE
+        progress?.visibility = View.GONE
         Toast.makeText(context, msgError, Toast.LENGTH_SHORT).show()
     }
 
