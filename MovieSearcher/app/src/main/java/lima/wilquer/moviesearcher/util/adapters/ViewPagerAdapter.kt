@@ -11,10 +11,10 @@ import lima.wilquer.moviesearcher.view.fragments.FiccaoFragment
 /**
  * Created by wilqu on 15/01/2019.
  */
-class ViewPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm){
+class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getItem(p0: Int): Fragment {
-        return when(p0){
+        return when (p0) {
             0 -> AcaoFragment()
             1 -> DramaFragment()
             2 -> FantasiaFragment()
@@ -27,7 +27,7 @@ class ViewPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm){
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return when(position){
+        return when (position) {
             0 -> "Ação"
             1 -> "Drama"
             2 -> "Fantasia"

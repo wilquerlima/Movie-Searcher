@@ -9,5 +9,5 @@ interface SearchService {
 
     @GET("search/movie?")
     fun getSearchedMovie(@Query("api_key") apiKey: String, @Query("language") language: String,
-                    @Query("query") query: String): Call<MovieResponse>
+                         @Query("query") query: String): Call<MovieResponse>
 }

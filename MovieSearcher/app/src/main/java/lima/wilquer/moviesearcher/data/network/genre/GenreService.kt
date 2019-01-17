@@ -8,5 +8,5 @@ import retrofit2.http.Query
 interface GenreService {
 
     @GET("genre/movie/list?")
-    fun getGenre(@Query("api_key") apiKey : String, @Query("language") language : String) : Call<GenreResponse>
+    fun getGenre(@Query("api_key") apiKey : String, @Query("language") language: String) : Call<GenreResponse>
 }

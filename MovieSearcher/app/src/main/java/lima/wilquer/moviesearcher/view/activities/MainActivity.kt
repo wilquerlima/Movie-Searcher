@@ -1,30 +1,15 @@
 package lima.wilquer.moviesearcher.view.activities
 
 import android.app.SearchManager
-import android.content.Context
 import android.content.Intent
-import android.graphics.Color
-import android.os.AsyncTask
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.SearchView
-import android.util.Log
 import android.view.Menu
 import android.widget.Toast
-import lima.wilquer.moviesearcher.util.adapters.ViewPagerAdapter
-import lima.wilquer.moviesearcher.R
-import lima.wilquer.moviesearcher.data.models.genre.Genres
-import lima.wilquer.moviesearcher.data.network.api.RetrofitApi
-import lima.wilquer.moviesearcher.util.Constants
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import kotlinx.android.synthetic.main.activity_main.*
-import lima.wilquer.moviesearcher.data.models.movie.MovieResponse
-import lima.wilquer.moviesearcher.data.models.movie.Movies
-import lima.wilquer.moviesearcher.data.network.movie.MovieService
-import lima.wilquer.moviesearcher.util.interfaces.OnMoviesCallBack
+import lima.wilquer.moviesearcher.R
+import lima.wilquer.moviesearcher.util.adapters.ViewPagerAdapter
 
 class MainActivity : AppCompatActivity() {
 

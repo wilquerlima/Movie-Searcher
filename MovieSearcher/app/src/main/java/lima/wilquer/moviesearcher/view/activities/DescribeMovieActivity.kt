@@ -1,28 +1,17 @@
 package lima.wilquer.moviesearcher.view.activities
 
-import android.content.Intent
-import android.opengl.Visibility
 import android.os.AsyncTask
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import com.google.android.flexbox.FlexDirection
-import com.google.android.flexbox.FlexboxLayoutManager
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_describe_movie.*
 import lima.wilquer.moviesearcher.R
 import lima.wilquer.moviesearcher.data.models.movie.MovieDetailResponse
-import lima.wilquer.moviesearcher.data.models.movie.MovieResponse
-import lima.wilquer.moviesearcher.data.models.movie.Movies
 import lima.wilquer.moviesearcher.data.network.api.RetrofitApi
 import lima.wilquer.moviesearcher.data.network.movie.MovieService
 import lima.wilquer.moviesearcher.util.Constants
-import lima.wilquer.moviesearcher.util.adapters.RecycleViewAdapter
-import lima.wilquer.moviesearcher.util.interfaces.OnMoviesCallBack
 import lima.wilquer.moviesearcher.util.interfaces.OnMoviesDetailCallBack
 import retrofit2.Call
 import retrofit2.Callback
@@ -74,7 +63,7 @@ class DescribeMovieActivity : AppCompatActivity(), OnMoviesDetailCallBack {
     }
 
     override fun onSucess(movie: MovieDetailResponse?) {
-        Toast.makeText(this, "onResponse", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "onResponse", Toast.LENGTH_SHORT).show()
         val url = Constants.URL_IMAGE + Constants.POSTER_SIZE_DETAILS + movie!!.poster_path
         Picasso.with(this).
                 load(url).
