@@ -10,8 +10,7 @@ import lima.wilquer.moviesearcher.R
 import lima.wilquer.moviesearcher.data.models.movie.MovieDetailResponse
 import lima.wilquer.moviesearcher.util.Constants
 
-class DescribeMovieActivity : AppCompatActivity(), DescribeContract.View{
-
+class DescribeMovieActivity : AppCompatActivity(), DescribeContract.View {
 
     override lateinit var presenter: DescribeContract.Presenter
 
@@ -27,7 +26,7 @@ class DescribeMovieActivity : AppCompatActivity(), DescribeContract.View{
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
 
-        DescribePresenter(this,id)
+        DescribePresenter(this, id)
     }
 
     override fun onResume() {
@@ -41,7 +40,7 @@ class DescribeMovieActivity : AppCompatActivity(), DescribeContract.View{
     }
 
     override fun setProgress(active: Boolean) {
-        if (active){
+        if (active) {
             progress?.visibility = View.VISIBLE
         } else {
             progress?.visibility = View.GONE
@@ -50,12 +49,10 @@ class DescribeMovieActivity : AppCompatActivity(), DescribeContract.View{
 
     override fun showMovie(movie: MovieDetailResponse?) {
         val url = Constants.URL_IMAGE + Constants.POSTER_SIZE_DETAILS + movie!!.poster_path
-        Picasso.with(this).
-                load(url).
-                into(img_desc)
+        Picasso.with(this).load(url).into(img_desc)
         descricao.visibility = View.VISIBLE
 
-        if(movie.overview.equals("")) {
+        if (movie.overview.equals("")) {
             txt_desc.text = getString(R.string.noDescription)
         } else txt_desc.text = movie.overview
     }

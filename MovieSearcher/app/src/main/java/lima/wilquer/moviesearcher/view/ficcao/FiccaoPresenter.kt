@@ -1,6 +1,6 @@
 package lima.wilquer.moviesearcher.view.ficcao
 
-import lima.wilquer.moviesearcher.HomeContract
+import lima.wilquer.moviesearcher.BaseContract
 import lima.wilquer.moviesearcher.data.models.movie.MovieResponse
 import lima.wilquer.moviesearcher.data.network.api.RetrofitApi
 import lima.wilquer.moviesearcher.data.network.movie.MovieService
@@ -10,10 +10,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FiccaoPresenter(val homeView: HomeContract.View) : HomeContract.Presenter {
+class FiccaoPresenter(val baseView: BaseContract.View) : BaseContract.Presenter {
 
     init {
-        homeView.presenter = this
+        baseView.presenter = this
     }
 
     override fun start() {
@@ -21,7 +21,7 @@ class FiccaoPresenter(val homeView: HomeContract.View) : HomeContract.Presenter 
     }
 
     private fun loadActionMovies() {
-        homeView.setProgress(true)
+        baseView.setProgress(true)
 
         doAsync {
             val apiService = RetrofitApi(Constants.URL_GERAL).client.create(MovieService::class.java)
@@ -29,13 +29,13 @@ class FiccaoPresenter(val homeView: HomeContract.View) : HomeContract.Presenter 
             val call = apiService.getPopularMovies(Constants.API_KEY, Constants.LANGUAGE_PT_BR, "1")
             call.enqueue(object : Callback<MovieResponse> {
                 override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-                    homeView.setProgress(false)
-                    homeView.onErrorMovies("onError")
+                    baseView.setProgress(false)
+                    baseView.onErrorMovies("onError")
                 }
 
                 override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
-                    homeView.setProgress(false)
-                    homeView.showMovies(response.body()!!.results)
+                    baseView.setProgress(false)
+                    baseView.showMovies(response.body()!!.results)
                 }
 
             })

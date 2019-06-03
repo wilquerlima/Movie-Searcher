@@ -27,7 +27,9 @@ class RecycleViewAdapter(val list: List<Movies>?, val context: Context) : Recycl
         val cardView = view.card_movie
 
         fun updateWithUrl(url: String) {
-            Picasso.with(itemView.context).load(url).into(imgMovie)
+            Picasso.with(itemView.context)
+                    .load(url)
+                    .into(imgMovie)
         }
     }
 
@@ -41,12 +43,12 @@ class RecycleViewAdapter(val list: List<Movies>?, val context: Context) : Recycl
         holder.titleMovie.text = list[position].title
 
         //onClick para descrever o filme do cardView
-        holder.cardView.setOnClickListener({
+        holder.cardView.setOnClickListener {
             val intent = Intent(context, DescribeMovieActivity::class.java)
             intent.putExtra("id", list[position].id)
             intent.putExtra("title", list[position].title)
             startActivity(context, intent, Bundle.EMPTY)
-        })
+        }
     }
 
     override fun onCreateViewHolder(p0: ViewGroup, position: Int): ViewHolder {

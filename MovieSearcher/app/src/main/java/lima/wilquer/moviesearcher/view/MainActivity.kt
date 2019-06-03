@@ -1,4 +1,4 @@
-package lima.wilquer.moviesearcher.view.activities
+package lima.wilquer.moviesearcher.view
 
 import android.app.SearchManager
 import android.content.Intent
@@ -17,6 +17,7 @@ import lima.wilquer.moviesearcher.view.fantasia.FantasiaPresenter
 import lima.wilquer.moviesearcher.view.ficcao.FiccaoFragment
 import lima.wilquer.moviesearcher.view.ficcao.FiccaoPresenter
 import lima.wilquer.moviesearcher.util.adapters.ViewPagerAdapter
+import lima.wilquer.moviesearcher.view.search.SearchableActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,15 +45,8 @@ class MainActivity : AppCompatActivity() {
         fragmentAdapter.addFragment(fantasiaFragment)
         fragmentAdapter.addFragment(ficcaoFragment)
 
-
         viewpager.adapter = fragmentAdapter
         tab.setupWithViewPager(viewpager)
-
-        /*val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.container, acaoFragment)
-        transaction.commit()*/
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -70,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                 //Toast.makeText(this@MainActivity,p0,Toast.LENGTH_SHORT).show()
                 val intent = Intent(applicationContext, SearchableActivity::class.java)
                 intent.putExtra(SearchManager.QUERY, p0)
-                intent.setAction(Intent.ACTION_SEARCH)
+                intent.action = Intent.ACTION_SEARCH
                 startActivity(intent)
                 return false
             }

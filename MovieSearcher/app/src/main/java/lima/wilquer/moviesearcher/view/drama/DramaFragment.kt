@@ -10,7 +10,7 @@ import android.widget.Toast
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import kotlinx.android.synthetic.main.fragment_drama.view.*
-import lima.wilquer.moviesearcher.HomeContract
+import lima.wilquer.moviesearcher.BaseContract
 import lima.wilquer.moviesearcher.R
 import lima.wilquer.moviesearcher.data.models.movie.Movies
 import lima.wilquer.moviesearcher.util.Constants
@@ -18,9 +18,9 @@ import lima.wilquer.moviesearcher.util.adapters.RecycleViewAdapter
 import org.jetbrains.anko.support.v4.ctx
 
 
-class DramaFragment : Fragment(), HomeContract.View {
+class DramaFragment : Fragment(), BaseContract.View {
 
-    override lateinit var presenter: HomeContract.Presenter
+    override lateinit var presenter: BaseContract.Presenter
     var rv: RecyclerView? = null
     val moviesList = mutableListOf<Movies>()
 
