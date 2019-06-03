@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.movie_item.view.*
 import lima.wilquer.moviesearcher.R
 import lima.wilquer.moviesearcher.data.models.movie.Movies
 import lima.wilquer.moviesearcher.util.Constants
-import lima.wilquer.moviesearcher.view.activities.DescribeMovieActivity
+import lima.wilquer.moviesearcher.view.describe.DescribeMovieActivity
 
 /**
  * Created by wilqu on 15/01/2019.

@@ -3,27 +3,20 @@ package lima.wilquer.moviesearcher.util.adapters
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import lima.wilquer.moviesearcher.view.fragments.AcaoFragment
-import lima.wilquer.moviesearcher.view.fragments.DramaFragment
-import lima.wilquer.moviesearcher.view.fragments.FantasiaFragment
-import lima.wilquer.moviesearcher.view.fragments.FiccaoFragment
 
 /**
  * Created by wilqu on 15/01/2019.
  */
 class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
+    val listFragments = mutableListOf<Fragment>()
+
     override fun getItem(p0: Int): Fragment {
-        return when (p0) {
-            0 -> AcaoFragment()
-            1 -> DramaFragment()
-            2 -> FantasiaFragment()
-            else -> FiccaoFragment()
-        }
+        return listFragments[p0]
     }
 
     override fun getCount(): Int {
-        return 4
+        return listFragments.size
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
@@ -31,7 +24,12 @@ class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
             0 -> "Ação"
             1 -> "Drama"
             2 -> "Fantasia"
-            else -> "Ficção"
+            3 -> "Ficção"
+            else -> "Error"
         }
+    }
+
+    fun addFragment(fragment: Fragment){
+        listFragments.add(fragment)
     }
 }
