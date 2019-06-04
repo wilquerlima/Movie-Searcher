@@ -49,6 +49,14 @@ class MainActivity : AppCompatActivity() {
         tab.setupWithViewPager(viewpager)
     }
 
+    override fun onBackPressed() {
+        if(viewpager.currentItem == 0){
+            super.onBackPressed()
+        } else {
+            viewpager.currentItem = viewpager.currentItem - 1
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
 

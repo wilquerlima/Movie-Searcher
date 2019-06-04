@@ -33,7 +33,7 @@ class AcaoFragment : Fragment(), BaseContract.View {
         super.onResume()
         moviesList.clear()
         rv?.adapter?.notifyDataSetChanged()
-        presenter.start()
+        presenter?.start()
     }
 
     override fun setProgress(active: Boolean) {

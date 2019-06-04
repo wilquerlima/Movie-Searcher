@@ -48,7 +48,7 @@ class SearchableActivity : AppCompatActivity(), BaseContract.View {
         if (Intent.ACTION_SEARCH == intent.action) {
             query = intent.getStringExtra(SearchManager.QUERY)
             SearchPresenter(this, query)
-            presenter.start()
+            presenter?.start()
         }
     }
 

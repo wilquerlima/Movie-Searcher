@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.movie_item.view.*
 import lima.wilquer.moviesearcher.R
@@ -29,6 +30,7 @@ class RecycleViewAdapter(val list: List<Movies>?, val context: Context) : Recycl
         fun updateWithUrl(url: String) {
             Picasso.with(itemView.context)
                     .load(url)
+                    .fit()
                     .into(imgMovie)
         }
     }

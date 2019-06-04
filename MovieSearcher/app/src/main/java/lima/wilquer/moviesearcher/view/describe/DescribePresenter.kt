@@ -35,7 +35,7 @@ class DescribePresenter(val describeView: DescribeContract.View, val idMovie: In
 
                 override fun onResponse(call: Call<MovieDetailResponse>?, response: Response<MovieDetailResponse>?) {
                     describeView.setProgress(false)
-                    describeView.showMovie(response!!.body())
+                    describeView.showMovie(response?.body())
                 }
             })
         }
